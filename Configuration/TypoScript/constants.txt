@@ -1,0 +1,203 @@
+
+plugin.kss_tmpl_gumby {
+	settings {
+
+		# =======================================================
+		#  Basic configuration
+		# =======================================================
+
+		# cat=Configuration: Basic/settings/1000; type=boolean; label= Live Mode: 0 = Live - Productive  (no_cache=0) / 1 = Development (set "robots noindex,nofollow", no_cache = 1)
+		LIVE_MODE = 0
+
+		# cat=Configuration: Basic/settings/1010; type=int+; label= Starting PID: PID of your site root
+		homepageUid = 1
+
+		# cat=Configuration: Basic/settings/1020; type=boolean; label= RealUrl: enable/disable
+		real_url_enable = 0
+
+		# cat=Configuration: Basic/settings/1030; type=boolean; label= JavaScript position: move JS from header to footer
+		moveJsFromHeaderToFooter = 1
+
+		# cat=Configuration: Basic/settings/1040; type=boolean; label=Remove default CSS
+		removeDefaultCss = 0
+
+		# cat=Configuration: Basic/settings/1050; type=string; label=Favicon file
+		shortcutIcon = EXT:kss_tmpl_gumby/Resources/Public/Icons/favicon.ico
+
+		# cat=Configuration: Basic/settings/1060; type=string; label=Apple touch icon file 56px
+		appleTouchIcon = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch.png
+
+		# cat=Configuration: Basic/settings/1070; type=string; label=Apple touch icon file 72px
+		appleTouchIcon72 = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch-72px.png
+
+		# cat=Configuration: Basic/settings/1080; type=string; label=Apple touch icon file 114px
+		appleTouchIcon114 = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch-114px.png
+
+		# cat=Configuration: Basic/settings/1090; type=string; label=Apple touch icon file 144px
+		appleTouchIcon144 = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch-144px.png
+
+		# cat=Configuration: Basic/settings/1100; type=string; label=Company Name for <img> alt-Tag
+        company_name = KSS online
+
+		# cat=Configuration: Basic/settings/1110; type=string; label=Logo for template
+		logo = typo3conf/ext/kss_tmpl_gumby/Resources/Public/img/kss_online_logo.png
+
+		# cat=Configuration: Basic/settings/1120; type=integer; label=Copyright Year
+		copyrightyear =
+
+
+		# =======================================================
+		#  Domain configuration
+		# =======================================================
+
+		# cat=Configuration: Domain/settings/1000; type=string; label= [Live] Base URL for RealUrl: Live Website URL (eg. www.mybaseurl.com, WITHOUT http://.../)
+		baseURL =
+
+		# cat=Configuration: Domain/settings/1010; type=string; label= [Stage] Base URL for RealUrl: Stage Website URL (eg. project.kss-dev.com, WITHOUT http://.../)
+		baseURLstage =
+
+		# cat=Configuration: Domain/settings/1020; type=string; label= [Testing] Base URL for RealUrl: Testing Website URL (eg. mybaseurl.dev, WITHOUT http://.../)
+		baseURLtesting =
+
+		# cat=Configuration: Domain/settings/1030; type=string; label= [Dev] Base URL for RealUrl: Development Website URL(eg. mybaseurl.lan, WITHOUT http://.../)
+        baseURLdev =
+
+		# cat=Configuration: Domain/settings/1040; type=string; label= Absolute Reference Prefix
+		absRefPrefix = /
+
+		# cat=Configuration: Domain/settings/1050; type=string; label= Absolute Reference Prefix for Mobile
+		mobileAbsRefPrefix =
+
+
+		# =======================================================
+		#  Metatags configuration
+		# =======================================================
+
+		# cat=Configuration: Metatags/meta/1000; type=string; label= Meta Copyright: eg. KSS services/solutions
+		meta.copyright = KSS services/solutions
+
+		# cat=Configuration: Metatags/meta/1010; type=string; label= Meta Publisher: eg. KSS services/solutions
+		meta.publisher = KSS services/solutions
+
+		# Configuration of <title> style: title of page - companyName
+		# cat=Configuration: Metatags/meta/1020; type=string; label=Title Tag: style: title of page - companyName
+		meta.titleTabCompany = KSS services/solutions
+
+		# cat=Configuration: Metatags/meta/1030; type=string; label= Meta SEO: Google revisit in (e.g. 3 days)
+		meta.google_revisit = 7 days
+
+		# cat=Configuration: Metatags/meta/1040; type=string; label= Meta SEO: Google verify-v1 code
+		meta.google_verify-v1 =
+
+	}
+
+	compressor {
+		# cat=Configuration: Compressor/js/2000; type=boolean; label=Concatenate Javascript
+		concatenateJs = 0
+
+		# cat=Configuration: Compressor/css/2010; type=boolean; label=Concatenate Stylesheets
+		concatenateCss = 0
+
+		# cat=Configuration: Compressor/js/2020; type=boolean; label=Compress Javascript
+		compressJs = 0
+
+		# cat=Configuration: Compressor/css/2030; type=boolean; label=Compress Stylesheets
+		compressCss = 0
+	}
+
+	index {
+		# cat=Configuration: Indexing/index/3000; type=boolean; label=Enable indexing
+		enable = 0
+
+		# cat=Configuration: Indexing/index/3010; type=boolean; label=Index external resources
+		externals = 0
+
+		# cat=Configuration: Indexing/index/3020; type=boolean; label=Index meta tags
+		metatags = 0
+	}
+
+	typolink {
+		# cat=Configuration: Typolink/typolink/4010; type=boolean; label=Enable typolink modification
+		modify = 0
+
+		# cat=Configuration: Typolink/typolink/4020; type=boolean; label=Cleanup the target attribute
+		cleanupTarget = 0
+
+		# cat=Configuration: Typolink/typolink/4030; type=string; label=Target for external links
+		extTarget = _blank
+
+		# cat=Configuration: Typolink/typolink/4040; type=string; label=Target for internal links
+		intTarget = _self
+
+		# cat=Configuration: Typolink/typolink/4050; type=boolean; label=Set rel="nofollow" for external links
+		relNoFollow = 1
+	}
+
+	libraries {
+
+		# cat=Configuration: Libraries/jQuery/7010; type=boolean; label=Load jQuery-UI
+		jqueryui.load = 0
+
+		# cat=Configuration: Libraries/jQuery/7020; type=boolean; label=Load jQueryTools
+		jquerytools.load = 0
+
+		# cat=Configuration: Libraries/jQuery/7030; type=boolean; label=Load jQueryJson
+		jqueryjson.load = 0
+
+		# cat=Configuration: Libraries/jQuery/7040; type=boolean; label=Load jQueryMobile
+		jquerymobile.load = 0
+
+		# cat=Configuration: Libraries/jQuery/7050; type=boolean; label=Load jStorage
+		jstorage.load = 0
+
+		# cat=Configuration: Libraries/jQuery/7060; type=boolean; label=Load jQueryCookie
+		jquerycookie.load = 0
+
+
+		# cat=Configuration: Libraries/libraries/7070; type=boolean; label=Load Prototype
+		prototype.load = 0
+
+		# cat=Configuration: Libraries/libraries/7080; type=boolean; label=Load Scriptaculous
+		scriptaculous.load = 0
+
+		# cat=Configuration: Libraries/libraries/7090; type=string; label=Scriptaculous Modules
+		scriptaculous.modules =
+
+		# cat=Configuration: Libraries/libraries/7100; type=boolean; label=Load SWF-Object
+		swfobject.load = 0
+
+		# cat=Configuration: Libraries/libraries/7110; type=boolean; label=Load ExtJS
+		extjs.load = 0
+
+		# cat=Configuration: Libraries/libraries/7120; type=string; label=ExtJS CSS
+		extjs.css =
+
+		# cat=Configuration: Libraries/libraries/7130; type=string; label=ExtJS Theme
+		extjs.theme =
+
+		# cat=Configuration: Libraries/libraries/7140; type=string; label=ExtJS Adapter
+		extjs.adapter =
+
+		# cat=Configuration: Libraries/libraries/7150; type=boolean; label=Load SVG library
+		svg.load = 0
+
+		# cat=Configuration: Libraries/libraries/7160; type=boolean; label=Force Flash in SVG library
+		svg.forceFlash = 0
+	}
+}
+
+		# excluded for the gumby tmpl - can't otherwise use fallback to old jQ version
+		# # cat=Configuration: Libraries/jQuery/7000; type=boolean; label=Load jQuery
+		#jquery.load = 1
+
+        # # cat=Configuration: Libraries/jQuery/7001; type=string; label=jQuery: version (default: latest)
+        #jquery.version = 2.0.2
+
+        # # cat=Configuration: Libraries/jQuery/7002; type=string; label=jQuery: include from local or different CDNs (possible values: local|google|jquery|msn, default: local)
+        #jquery.source = google
+
+		# # cat=Configuration: Libraries/jQuery/7003; type=boolean; label=jQuery: Set no conflict
+        #jquery.noconflict = 0
+
+        # # cat=Configuration: Libraries/jQuery/7004; type=string; label=jQuery: change the namespace when noConflict is activated and use jQuery with "TYPO3.###NAMESPACE###(…);" (string, default: jQuery)
+        #jquery.noconflict.ownNamespace = jQuery

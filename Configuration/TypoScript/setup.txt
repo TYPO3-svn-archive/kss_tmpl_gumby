@@ -1,0 +1,106 @@
+# ======================================================================
+# Main Setup
+# ======================================================================
+
+config {
+	## Cache
+	no_cache = {$plugin.kss_tmpl_gumby.settings.LIVE_MODE}
+	cache_period = 172800
+	cache_clearAtMidnight = 1
+	sendCacheHeaders = 1
+
+	## Disable TYPO3 Debugging (<!-- Parsetime: 0 ms-->)
+	debug = 0
+
+	## Disable Admin Panel
+	admPanel = 0
+
+	## Disable Preview Box
+	disablePreviewNotification = 1
+
+	## SEO: Show Pagetitle first
+	pageTitleFirst = 1
+
+	## SEO: Use first 100 Signs of the real Filename for Temp-File
+	meaningfulTempFilePrefix = 100
+
+	## Moves all JS from Header to footer, just before the body closing tag
+	moveJsFromHeaderToFooter = {$plugin.kss_tmpl_gumby.settings.moveJsFromHeaderToFooter}
+
+	## Cleanup
+	xmlprologue = none
+	#xhtml_cleaning = all
+	disablePrefixComment = 1
+
+	## Externalize Inline Code
+	removeDefaultJS = external
+	inlineStyle2TempFile = 1
+
+	## Configure RealURL
+	simulateStaticDocuments = 0
+	tx_realurl_enable = {$plugin.kss_tmpl_gumby.real_url_enable}
+	uniqueLinkVars = 1
+	prefixLocalAnchors = all
+
+	## Abs. Ref Prefix ##
+	absRefPrefix = {$plugin.kss_tmpl_gumby.settings.absRefPrefix}
+
+	## Protect Mail Addresses
+	spamProtectEmailAddresses = -3
+	spamProtectEmailAddresses_atSubst = (at)
+
+	## Remove default CSS from extensions (since 4.6)
+	removeDefaultCss = {$plugin.kss_tmpl_gumby.settings.removeDefaultCss}
+
+	## Indexing
+	index_enable     = {$plugin.kss_tmpl_gumby.index.enable}
+	index_externals  = {$plugin.kss_tmpl_gumby.index.externals}
+	index_metatags   = {$plugin.kss_tmpl_gumby.index.metatags}
+
+	## Compression and concatenation of JS / CSS
+	concatenateJs    = {$plugin.kss_tmpl_gumby.compressor.concatenateJs}
+	concatenateCss   = {$plugin.kss_tmpl_gumby.compressor.concatenateCss}
+	compressJs       = {$plugin.kss_tmpl_gumby.compressor.compressJs}
+	compressCss      = {$plugin.kss_tmpl_gumby.compressor.compressCss}
+
+	## Cleanup typolinks
+	typolink {
+		modify         = {$plugin.kss_tmpl_gumby.typolink.modify}
+		cleanupTarget  = {$plugin.kss_tmpl_gumby.typolink.cleanupTarget}
+		extTarget      = {$plugin.kss_tmpl_gumby.typolink.extTarget}
+		intTarget      = {$plugin.kss_tmpl_gumby.typolink.intTarget}
+		relNoFollow    = {$plugin.kss_tmpl_gumby.typolink.relNoFollow}
+	}
+
+	headerComment (
+		This page is developed by:
+		KSS services/solutions
+		http://www.kss-online.com
+	)
+}
+
+
+
+# ======================================================================
+# Set baseURL related to stage server
+# ======================================================================
+config.baseURL = http://{$plugin.kss_tmpl_gumby.settings.baseURL}/
+[globalString = IENV:HTTP_HOST={$plugin.kss_tmpl_gumby.settings.baseURLstage}]
+	config.baseURL = http://{$plugin.kss_tmpl_gumby.settings.baseURLstage}/
+[globalString = IENV:HTTP_HOST={$plugin.kss_tmpl_gumby.settings.baseURLtesting}]
+	config.baseURL = http://{$plugin.kss_tmpl_gumby.settings.baseURLtesting}/
+[globalString = IENV:HTTP_HOST={$plugin.kss_tmpl_gumby.settings.baseURLdev}]
+	config.baseURL = http://{$plugin.kss_tmpl_gumby.settings.baseURLdev}/
+[global]
+
+
+
+# ======================================================================
+# Include external files
+# ======================================================================
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:kss_tmpl_gumby/Configuration/TypoScript/Page.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:kss_tmpl_gumby/Configuration/TypoScript/PageTypes.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:kss_tmpl_gumby/Configuration/TypoScript/Language.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:kss_tmpl_gumby/Configuration/TypoScript/Layout.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:kss_tmpl_gumby/Configuration/TypoScript/Menu.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:kss_tmpl_gumby/Configuration/TypoScript/Template.ts">
