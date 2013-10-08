@@ -9,6 +9,9 @@ tt_content.image.20.maxWInText = 1024
 # no divider div wrap
 tt_content.div.wrap = |
 
+# ======================================================================
+# Add new frames
+# ======================================================================
 tt_content.stdWrap.innerWrap.cObject = CASE
 tt_content.stdWrap.innerWrap.cObject {
  key.field = section_frame
@@ -18,6 +21,11 @@ tt_content.stdWrap.innerWrap.cObject {
  110.value = <div class="my_section_frame2">|</div>
 }
 
+
+
+# ======================================================================
+# Add new layouts
+# ======================================================================
 tt_content.stdWrap.outerWrap.cObject = CASE
 tt_content.stdWrap.outerWrap.cObject {
 	key.field = layout
