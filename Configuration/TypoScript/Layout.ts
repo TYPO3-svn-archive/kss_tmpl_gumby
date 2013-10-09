@@ -14,11 +14,11 @@ tt_content.div.wrap = |
 # ======================================================================
 tt_content.stdWrap.innerWrap.cObject = CASE
 tt_content.stdWrap.innerWrap.cObject {
- key.field = section_frame
- 100 = TEXT
- 100.value = <div class="my_section_frame1">|</div>
- 110 = TEXT
- 110.value = <div class="my_section_frame2">|</div>
+	key.field = section_frame
+	100 = TEXT
+	100.value = <div class="my_section_frame1">|</div>
+	110 = TEXT
+	110.value = <div class="my_section_frame2">|</div>
 }
 
 
@@ -54,14 +54,14 @@ tt_content.stdWrap.outerWrap.cObject {
 tt_content.stdWrap.innerWrap.cObject = CASE
 tt_content.stdWrap.innerWrap.cObject {
 
-  key.field = layout
+	key.field = layout
 
-  // copy the default behavior
-  101 < tt_content.stdWrap.innerWrap.cObject.default
+	// copy the default behavior
+	101 < tt_content.stdWrap.innerWrap.cObject.default
 
-  // add own class
-  101.30 = TEXT
-  101.30.value = ><div class="myclass">|</div></div>
+	// add own class
+	101.30 = TEXT
+	101.30.value = ><div class="myclass">|</div></div>
 
 }
 
