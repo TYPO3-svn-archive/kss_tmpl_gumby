@@ -50,16 +50,16 @@ plugin.kss_tmpl_gumby {
 		#  Domain configuration
 		# =======================================================
 
-		# cat=Configuration: Domain/settings/1000; type=string; label= [Live] Base URL for RealUrl: Live Website URL (eg. www.mybaseurl.com, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1000; type=string; label= [Live] Base URL: Live Website URL (eg. www.mybaseurl.com, WITHOUT http://.../)
 		baseURL =
 
-		# cat=Configuration: Domain/settings/1010; type=string; label= [Stage] Base URL for RealUrl: Stage Website URL (eg. project.kss-dev.com, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1010; type=string; label= [Stage] Base URL: Stage Website URL (eg. project.kss-dev.com, WITHOUT http://.../)
 		baseURLstage =
 
-		# cat=Configuration: Domain/settings/1020; type=string; label= [Testing] Base URL for RealUrl: Testing Website URL (eg. mybaseurl.dev, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1020; type=string; label= [Testing] Base URL: Testing Website URL (eg. mybaseurl.dev, WITHOUT http://.../)
 		baseURLtesting =
 
-		# cat=Configuration: Domain/settings/1030; type=string; label= [Dev] Base URL for RealUrl: Development Website URL(eg. mybaseurl.lan, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1030; type=string; label= [Dev] Base URL: Development Website URL(eg. mybaseurl.lan, WITHOUT http://.../)
         baseURLdev =
 
 		# cat=Configuration: Domain/settings/1040; type=string; label= Absolute Reference Prefix
