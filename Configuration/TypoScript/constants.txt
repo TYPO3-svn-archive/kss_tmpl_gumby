@@ -24,42 +24,33 @@ plugin.kss_tmpl_gumby {
 		# cat=Configuration: Basic/settings/1050; type=string; label=Favicon file
 		shortcutIcon = EXT:kss_tmpl_gumby/Resources/Public/Icons/favicon.ico
 
-		# cat=Configuration: Basic/settings/1060; type=string; label=Apple touch icon file 56px
+		# cat=Configuration: Basic/settings/1060; type=string; label=Apple touch icon file
 		appleTouchIcon = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch.png
 
-		# cat=Configuration: Basic/settings/1070; type=string; label=Apple touch icon file 72px
+		# cat=Configuration: Basic/settings/1070; type=string; label=Apple touch icon file
 		appleTouchIcon72 = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch-72px.png
 
-		# cat=Configuration: Basic/settings/1080; type=string; label=Apple touch icon file 114px
+		# cat=Configuration: Basic/settings/1080; type=string; label=Apple touch icon file
 		appleTouchIcon114 = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch-114px.png
 
-		# cat=Configuration: Basic/settings/1090; type=string; label=Apple touch icon file 144px
+		# cat=Configuration: Basic/settings/1090; type=string; label=Apple touch icon file
 		appleTouchIcon144 = typo3conf/ext/kss_tmpl_gumby/Resources/Public/Icons/apple-touch-144px.png
-
-		# cat=Configuration: Basic/settings/1100; type=string; label=Company Name for <img> alt-Tag
-        company_name = KSS online
-
-		# cat=Configuration: Basic/settings/1110; type=string; label=Logo for template
-		logo = typo3conf/ext/kss_tmpl_gumby/Resources/Public/img/kss_online_logo.png
-
-		# cat=Configuration: Basic/settings/1120; type=integer; label=Copyright Year
-		copyrightyear =
 
 
 		# =======================================================
 		#  Domain configuration
 		# =======================================================
 
-		# cat=Configuration: Domain/settings/1000; type=string; label= [Live] Base URL: Live Website URL (eg. www.mybaseurl.com, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1000; type=string; label= [Live] Base URL for RealUrl: Live Website URL (eg. www.mybaseurl.com, WITHOUT http://.../)
 		baseURL =
 
-		# cat=Configuration: Domain/settings/1010; type=string; label= [Stage] Base URL: Stage Website URL (eg. project.kss-dev.com, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1010; type=string; label= [Stage] Base URL for RealUrl: Stage Website URL (eg. project.kss-dev.com, WITHOUT http://.../)
 		baseURLstage =
 
-		# cat=Configuration: Domain/settings/1020; type=string; label= [Testing] Base URL: Testing Website URL (eg. mybaseurl.dev, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1020; type=string; label= [Testing] Base URL for RealUrl: Testing Website URL (eg. mybaseurl.dev, WITHOUT http://.../)
 		baseURLtesting =
 
-		# cat=Configuration: Domain/settings/1030; type=string; label= [Dev] Base URL: Development Website URL(eg. mybaseurl.lan, WITHOUT http://.../)
+		# cat=Configuration: Domain/settings/1030; type=string; label= [Dev] Base URL for RealUrl: Development Website URL(eg. mybaseurl.lan, WITHOUT http://.../)
         baseURLdev =
 
 		# cat=Configuration: Domain/settings/1040; type=string; label= Absolute Reference Prefix
@@ -134,6 +125,20 @@ plugin.kss_tmpl_gumby {
 	}
 
 	libraries {
+		# cat=Configuration: Libraries/jQuery/7000; type=boolean; label=Load jQuery
+		jquery.load = 1
+
+		# cat=Configuration: Libraries/jQuery/7001; type=string; label=jQuery: version (default: latest)
+		jquery.version = 1.10.2
+
+		# cat=Configuration: Libraries/jQuery/7002; type=string; label=jQuery: include from local or different CDNs (possible values: local|google|jquery|msn, default: local)
+		jquery.source = google
+
+		# cat=Configuration: Libraries/jQuery/7003; type=boolean; label=jQuery: Set no conflict
+		jquery.noconflict = 0
+
+		# cat=Configuration: Libraries/jQuery/7004; type=string; label=jQuery: change the namespace when noConflict is activated and use jQuery with "TYPO3.###NAMESPACE###(…);" (string, default: jQuery)
+		jquery.noconflict.ownNamespace = jQuery
 
 		# cat=Configuration: Libraries/jQuery/7010; type=boolean; label=Load jQuery-UI
 		jqueryui.load = 0
@@ -161,7 +166,7 @@ plugin.kss_tmpl_gumby {
 		scriptaculous.load = 0
 
 		# cat=Configuration: Libraries/libraries/7090; type=string; label=Scriptaculous Modules
-		scriptaculous.modules =
+		scriptaculous.modules = dragdrop,controls
 
 		# cat=Configuration: Libraries/libraries/7100; type=boolean; label=Load SWF-Object
 		swfobject.load = 0
@@ -175,7 +180,7 @@ plugin.kss_tmpl_gumby {
 		# cat=Configuration: Libraries/libraries/7130; type=string; label=ExtJS Theme
 		extjs.theme =
 
-		# cat=Configuration: Libraries/libraries/7140; type=string; label=ExtJS Adapter
+		# cat=Configuration: Libraries/libraries/7140; type=string; label=ExtJS Adapter (jquery|prototype|yui)
 		extjs.adapter =
 
 		# cat=Configuration: Libraries/libraries/7150; type=boolean; label=Load SVG library
@@ -185,19 +190,3 @@ plugin.kss_tmpl_gumby {
 		svg.forceFlash = 0
 	}
 }
-
-		# excluded for the gumby tmpl - can't otherwise use fallback to old jQ version
-		# # cat=Configuration: Libraries/jQuery/7000; type=boolean; label=Load jQuery
-		#jquery.load = 1
-
-        # # cat=Configuration: Libraries/jQuery/7001; type=string; label=jQuery: version (default: latest)
-        #jquery.version = 2.0.2
-
-        # # cat=Configuration: Libraries/jQuery/7002; type=string; label=jQuery: include from local or different CDNs (possible values: local|google|jquery|msn, default: local)
-        #jquery.source = google
-
-		# # cat=Configuration: Libraries/jQuery/7003; type=boolean; label=jQuery: Set no conflict
-        #jquery.noconflict = 0
-
-        # # cat=Configuration: Libraries/jQuery/7004; type=string; label=jQuery: change the namespace when noConflict is activated and use jQuery with "TYPO3.###NAMESPACE###(…);" (string, default: jQuery)
-        #jquery.noconflict.ownNamespace = jQuery

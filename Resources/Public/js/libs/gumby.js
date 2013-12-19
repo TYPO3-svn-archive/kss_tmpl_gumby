@@ -80,7 +80,6 @@
 
 		// call ready() code when dom is ready
 		this.$dom.ready(function() {
-
 			if(opts.debug) {
 				scope.debugMode = true;
 			}
@@ -91,12 +90,18 @@
 			var mods = opts.uiModules ? opts.uiModules : false;
 			scope.initUIModules(mods);
 
-			// if touch events are loaded fire helpers
-			if(scope.touchEventsLoaded || !scope.touchDevice) {
-				scope.helpers();
-			// inform gumby.init to fire helpers once loaded
-			} else {
-				scope.uiModulesReady = true;
+			if(scope.onReady) {
+				scope.onReady();
+			}
+
+			// call oldie() callback if applicable
+			if(scope.isOldie && scope.onOldie) {
+				scope.onOldie();
+			}
+
+			// call touch() callback if applicable
+			if(Modernizr.touch && scope.onTouch) {
+				scope.onTouch();
 			}
 		});
 
@@ -151,7 +156,7 @@
 		if(!this.debugMode || !window.console) { return; }
 		console[console[type] ? type : 'log'](data.length > 1 ? Array.prototype.slice.call(data) : data[0]);
 	};
-	
+
 	// pass args onto console method for output
 	Gumby.prototype.log = function() { this.console('log', arguments); };
 	Gumby.prototype.debug = function() { this.console('debug', arguments); };
@@ -205,7 +210,7 @@
 		this.inits[ref] = code;
 	};
 
-	// initialize a uiModule, single / array of module refs 
+	// initialize a uiModule, single / array of module refs
 	Gumby.prototype.initialize = function(ref, all) {
 		if(typeof ref === 'object') {
 			var i = 0;
@@ -216,7 +221,7 @@
 				}
 
 				this.inits[ref[i]](all);
-			}	
+			}
 		} else if(this.inits[ref] && typeof this.inits[ref] === 'function') {
 			this.inits[ref](all);
 		} else {

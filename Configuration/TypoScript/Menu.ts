@@ -32,13 +32,13 @@ lib.mainnavi {
 
 	2 < .1
 	2 {
-		wrap = <div class="dropdown lvl2"><ul>|</ul></div>
+		wrap = <div class="submenu lvl2"><ul>|</ul></div>
 		ACT.wrapItemAndSub = <li>|</li>
 	}
 
 	3 < .2
 	3 {
-		wrap = <div class="dropdown lvl3"><ul>|</ul></div>
+		wrap = <div class="submenu lvl3"><ul>|</ul></div>
 		ACT.wrapItemAndSub = <li>|</li>
 	}
 }
@@ -64,7 +64,7 @@ lib.breadcrumb {
 	}
 }
 
-# Default <ul> footer menu, separate menuitems by "|" e.g. "item1 | item2 | item3"
+# Default <ul> footer menu, separate menuitems by "|" e.g. "item1 | item2 | item3", does't take care of external links!
 lib.footermenu = HMENU
 lib.footermenu {
   special = directory
@@ -75,4 +75,44 @@ lib.footermenu {
     NO = 1
     NO.allWrap = ||*|&nbsp;/&nbsp;||*|
   }
+}
+
+# Menu which takes care about external links
+lib.relatedpages = HMENU
+lib.relatedpages {
+	special = directory
+	special.value = 50
+
+	1 = TMENU
+	1 {
+		expAll = 1
+		noBlur = 1
+
+		NO {
+			stdWrap.cObject = CASE
+			stdWrap.cObject {
+				key.field = doktype
+				default = TEXT
+				default {
+					field = title
+					typolink {
+						parameter.data = field:uid
+					}
+				}
+
+				3 < .default
+				3 {
+					stdWrap.htmlSpecialChars = 1
+					typolink {
+						parameter {
+							data >
+							dataWrap = http://{field:url}
+						}
+					}
+				}
+			}
+		doNotLinkIt = 1
+		allWrap = ||*|&nbsp;/&nbsp;||*|
+		}
+	}
 }

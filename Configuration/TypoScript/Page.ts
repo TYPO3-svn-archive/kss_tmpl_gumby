@@ -2,33 +2,40 @@
 #  Set Fluid-Template
 # ================================================
 page = PAGE
-page {
-	typeNum = 0
-	bodyTagCObject = CASE
-	bodyTagCObject {
-		key.field = layout
+# Use this configuration if you need specific body tags for a choosen layout
+#page {
+#	typeNum = 0
+#	bodyTagCObject = CASE
+#	bodyTagCObject {
+#		key.field = layout
+#
+#		default = TEXT
+#		default.value = <body>
+#
+#		# if key.field = 0
+#		0 < .default
+#
+#		#if key.field = 1
+#		1 = TEXT
+#		1.wrap = <body id="|">
+#		1.value = one-column
+#
+#		#...
+#		2 = TEXT
+#		2.wrap = <body id="|">
+#		2.value = three-columns
+#
+#		3 = TEXT
+#		3.wrap = <body id="|">
+#		3.value = four-columns
+#	}
+#}
 
-		default = TEXT
-		default.value = <body>
+page.bodyTag >
+page.bodyTagCObject = TEXT
+page.bodyTagCObject.field = uid
+page.bodyTagCObject.wrap = <body id="page-uid-|">
 
-		# if key.field = 0
-		0 < .default
-
-		#if key.field = 1
-		1 = TEXT
-		1.wrap = <body id="|">
-		1.value = one-column
-
-		#...
-		2 = TEXT
-		2.wrap = <body id="|">
-		2.value = three-columns
-
-		3 = TEXT
-		3.wrap = <body id="|">
-		3.value = four-columns
-	}
-}
 
 page.10 = FLUIDTEMPLATE
 page.10 {
@@ -41,8 +48,8 @@ page.10 {
 		default = TEXT
 		default.value = EXT:kss_tmpl_gumby/Resources/Private/Templates/Default.html
 
-		# Durch Auswahl des Backendlayouts wird auch das entsprechende Template verwendet
-		# The number equals the UID of the backend Layout:
+		# If needed, with this settings you can switch the template for a page in the backend
+		# The number equals the UID of the backend layout:
 		#1 = TEXT
         #1.value = EXT:kss_tmpl_gumby/Resources/Private/Templates/2Column.html
 
@@ -70,11 +77,9 @@ page.10 {
    }
 
 
-	# Da diese "Extension" keine Controller etc hat, wird hier ein Extensionname manuell gesetzt.
-	# Dies ist für die korrekte Funktion des <f:translate> - Viewhelper "notwendig",
-	# da sonst immer der ExtName angegeben werden muss
-	extbase.controllerExtensionName = KssTemplate
-	#extbase.pluginName = Pi1
+	# Add an "virtual" extension name to be able to use <f:translate id="close" /> viewhelpers with just an id like in regular extension.
+	# Otherwise you have to use the complete path to the locallang files
+	extbase.controllerExtensionName = kss_tmpl_gumby
 }
 
 
@@ -108,120 +113,49 @@ page {
 
     ## Add jQuery
     javascriptLibs {
-		# Load jquery - don't use it for gumby, we can't otherwise use the fallback to jQ1.10.x for old browsers
-		#jQuery = {$plugin.kss_tmpl_gumby.libraries.jquery.load}
+		# Load jquery
+		jQuery = {$plugin.kss_tmpl_gumby.libraries.jquery.load}
 
 		# Select version
-		#jQuery.version = {$plugin.kss_tmpl_gumby.libraries.jquery.version}
+		jQuery.version = {$plugin.kss_tmpl_gumby.libraries.jquery.version}
 
 		# include from local or different CDNs (possible values: local|google|jquery|msn, default: local)
-		#jQuery.source = {$plugin.kss_tmpl_gumby.libraries.jquery.source}
+		jQuery.source = {$plugin.kss_tmpl_gumby.libraries.jquery.source}
 
         # set jQuery into its own scope to avoid conflicts (boolean)
-        #jQuery.noConflict = {$plugin.kss_tmpl_gumby.libraries.jquery.noconflict}
+        jQuery.noConflict = {$plugin.kss_tmpl_gumby.libraries.jquery.noconflict}
 
         # change the namespace when noConflict is activated and use jQuery with "TYPO3.###NAMESPACE###(…);" (string, default: jQuery)
-        #jQuery.noConflict.namespace = {$plugin.kss_tmpl_gumby.libraries.jquery.noconflict.ownNamespace}
+        jQuery.noConflict.namespace = {$plugin.kss_tmpl_gumby.libraries.jquery.noconflict.ownNamespace}
 
 		# include prototype
-		Prototype =
+		Prototype = {$plugin.kss_tmpl_gumby.libraries.prototype.load}
 
 		# include Scriptaculous
-		Scriptaculous =
+		Scriptaculous = {$plugin.kss_tmpl_gumby.libraries.scriptaculous.load}
 
 		# adds modules dragdrop and controls to Scriptaculous
-		Scriptaculous.modules = dragdrop,controls
-
-		# include ExtCore
-		ExtCore =
-
-		# include ExtCore debug file (uncompressed)
-		ExtCore.debug =
+		Scriptaculous.modules = {$plugin.kss_tmpl_gumby.libraries.scriptaculous.load}
 
 		# includes ExtJS
-		ExtJs =
+		ExtJs = {$plugin.kss_tmpl_gumby.libraries.extjs.load}
 
 		# include ext-all.css
-		ExtJs.css =
+		ExtJs.css = {$plugin.kss_tmpl_gumby.libraries.extjs.css}
 
 		# include default theme
-		ExtJs.theme =
+		ExtJs.theme = {$plugin.kss_tmpl_gumby.libraries.extjs.theme}
 
 		# load specific adapter (jquery|prototype|yui)
-		ExtJs.adapter =
-
-		# initialize QuickTips
-		ExtJs.quickTips =
-
-		# includes ExtJS debug file (uncompressed)
-		ExtJs.debug =
+		ExtJs.adapter = {$plugin.kss_tmpl_gumby.libraries.extjs.adapter}
 
 		# include SVG library
-		SVG =
-
-		# include SVG debug file
-		SVG.debug =
+		SVG = {$plugin.kss_tmpl_gumby.libraries.svg.load}
 
 		#force rendering with flash
-		SVG.forceFlash =
-
-
+		SVG.forceFlash = {$plugin.kss_tmpl_gumby.libraries.svg.forceFlash}
 	}
 
-    includeJSlibs {
-        # reverse order as desired due to forceOnTop
-
-		gumbyInit >
-		gumbyInit = EXT:kss_tmpl_gumby/Resources/Public/js/libs/gumby.init.js
-		gumbyInit.forceOnTop = 1
-
-		gumbyValidation >
-		gumbyValidation = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.validation.js
-		gumbyValidation.forceOnTop = 1
-
-		gumbyFittext >
-		gumbyFittext = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.fittext.js
-		gumbyFittext.forceOnTop = 1
-
-		gumbyNavbar >
-		gumbyNavbar = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.navbar.js
-		gumbyNavbar.forceOnTop = 1
-
-		gumbyRadiobtn >
-		gumbyRadiobtn = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.radiobtn.js
-		gumbyRadiobtn.forceOnTop = 1
-
-		gumbyCheckbox >
-		gumbyCheckbox = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.checkbox.js
-		gumbyCheckbox.forceOnTop = 1
-
-		gumbyToggleswitch >
-		gumbyToggleswitch = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.toggleswitch.js
-		gumbyToggleswitch.forceOnTop = 1
-
-		gumbySkiplink >
-		gumbySkiplink = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.skiplink.js
-		gumbySkiplink.forceOnTop = 1
-
-		gumbyFixed >
-		gumbyFixed = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.fixed.js
-		gumbyFixed.forceOnTop = 1
-
-		gumbyRetina >
-		gumbyRetina = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.retina.js
-		gumbyRetina.forceOnTop = 1
-
-		gumby >
-		gumby = EXT:kss_tmpl_gumby/Resources/Public/js/libs/gumby.min.js
-		gumby.forceOnTop = 1
-
-		oldi >
-		oldi = EXT:kss_tmpl_gumby/Resources/Public/js/libs/oldiCheck.js
-		oldi.forceOnTop = 1
-
-        # FORCE POSITION after jquery due to extension order dependencies
-
-    }
     includeJS{
     	plugins = EXT:kss_tmpl_gumby/Resources/Public/js/plugins.js
 		main = EXT:kss_tmpl_gumby/Resources/Public/js/main.js
@@ -247,19 +181,19 @@ page {
 
 	# Modernizr
 	headerData.1 = TEXT
-	headerData.1.value = <script src="typo3conf/ext/kss_tmpl_gumby/Resources/Public/js/libs/modernizr-2.6.2.min.js" type="text/javascript"></script>
+	headerData.1.value = <script src="typo3conf/ext/kss_tmpl_gumby/Resources/Public/js/libs/modernizr-2.7.1.min.js" type="text/javascript"></script>
 
 	# Override default gumby path
 	headerData.2 = TEXT
 	headerData.2.value = <script gumby-path="typo3conf/ext/kss_tmpl_gumby/Resources/Public/js/libs"></script>
 
-    # Base title
-    config.noPageTitle = 2
-    headerData.3 = TEXT
-    headerData.3 {
-        field = subtitle // title
-        stdWrap.noTrimWrap = |<title>| - {$plugin.kss_tmpl_gumby.settings.meta.titleTabCompany}</title>|
-    }
+    # Base title - Use tq_seo for this instead
+    #config.noPageTitle = 2
+    #headerData.3 = TEXT
+    #headerData.3 {
+    #    field = subtitle // title
+    #    stdWrap.noTrimWrap = |<title>| - {$plugin.kss_tmpl_gumby.settings.meta.titleTabCompany}</title>|
+    #}
 
     # Apple Touch Icon
     headerData.4 = TEXT
@@ -287,6 +221,71 @@ page {
 # ======================================================================
 [globalVar = LIT:1 = {$plugin.kss_tmpl_gumby.settings.LIVE_MODE}]
     page.meta.robots = noindex,nofollow
+	page {
+		includeJSlibs {
+			# reverse order as desired due to forceOnTop
+
+			gumbyInit >
+			gumbyInit = EXT:kss_tmpl_gumby/Resources/Public/js/libs/gumby.init.js
+			gumbyInit.forceOnTop = 1
+
+			gumbyParallax >
+			gumbyParallax = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.parallax.js
+			gumbyParallax.forceOnTop = 1
+
+			gumbyValidation >
+			gumbyValidation = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.validation.js
+			gumbyValidation.forceOnTop = 1
+
+			gumbyFittext >
+			gumbyFittext = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.fittext.js
+			gumbyFittext.forceOnTop = 1
+
+			gumbyNavbar >
+			gumbyNavbar = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.navbar.js
+			gumbyNavbar.forceOnTop = 1
+
+			gumbyRadiobtn >
+			gumbyRadiobtn = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.radiobtn.js
+			gumbyRadiobtn.forceOnTop = 1
+
+			gumbyCheckbox >
+			gumbyCheckbox = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.checkbox.js
+			gumbyCheckbox.forceOnTop = 1
+
+			gumbyToggleswitch >
+			gumbyToggleswitch = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.toggleswitch.js
+			gumbyToggleswitch.forceOnTop = 1
+
+			gumbySkiplink >
+			gumbySkiplink = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.skiplink.js
+			gumbySkiplink.forceOnTop = 1
+
+			gumbyFixed >
+			gumbyFixed = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.fixed.js
+			gumbyFixed.forceOnTop = 1
+
+			gumbyRetina >
+			gumbyRetina = EXT:kss_tmpl_gumby/Resources/Public/js/libs/ui/gumby.retina.js
+			gumbyRetina.forceOnTop = 1
+
+			gumby >
+			gumby = EXT:kss_tmpl_gumby/Resources/Public/js/libs/gumby.js
+			gumby.forceOnTop = 1
+
+			# FORCE POSITION after jquery due to extension order dependencies
+
+		}
+	}
+[else]
+	page {
+		includeJSlibs {
+			# reverse order as desired due to forceOnTop
+			gumby >
+			gumby = EXT:kss_tmpl_gumby/Resources/Public/js/libs/gumby.min.js
+			gumby.forceOnTop = 1
+		}
+	}
 [global]
 
 

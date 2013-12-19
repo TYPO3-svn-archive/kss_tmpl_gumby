@@ -41,3 +41,10 @@ page.10.variables {
 	#socialmedia < lib.socials
 
 }
+
+lib.mycopyright = TEXT
+lib.mycopyright {
+   data = date : U
+   strftime = %Y
+   noTrimWrap = |<span class="copyright">&copy; | KSS services/solutions</span>|
+}

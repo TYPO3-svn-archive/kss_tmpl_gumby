@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-03-07T13:23:42Z" product-name="kss_tmpl_gumby">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-03-07T13:23:42Z" product-name="tx_kss_tmpl_gumby">
 		<header/>
 		<body>
-
+			<trans-unit id="follow-us">
+				<source>Follow us on</source>
+			</trans-unit>
+			<trans-unit id="close">
+				<source>close</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

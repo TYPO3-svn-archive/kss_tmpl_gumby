@@ -1,15 +1,18 @@
-Manual for Responsive Gumby Template 2.6
-========================================
+﻿============
+Users manual
+============
+
+Target group: **Editors**
 
 
-Default Setup & Responsive Gumby Template
-=========================================
+Default Setup & Responsive Gumby 2.6 Template
+=============================================
 
 This is a "skeleton" template which is using the gumby responsive framework. The template is integrated in a TYPO3 CMS extension (tested for version TYPO3 v 6.x).
 
 !Attention! !WARNING!
 ======================
-With each update of this app all of your settings, templates, css, ... will be overwritten! NEVER install an update if you have already done some custom settings or save them before you update! 
+With each update of this app all of your settings, templates, css, ... will be overwritten! NEVER install an update if you have already done some custom settings or save them before you update!
 
 Some features
 =================
@@ -57,7 +60,7 @@ If live mode is set, no_cache = 0 and other settings (like use gumby.min.js) are
 Needed for RealURL to set the starting point, the PID of your "home" page.
 
 
-CONFIGURATION: DOMAIN 
+CONFIGURATION: DOMAIN
 ---------------------
 > [Live] Base URL
 Define at least one base URL. You can define up to 4 URLs for instance for lokal development environment, company development server, stage server and live server
@@ -70,13 +73,13 @@ gridelements
 ------------------------------
 I also recommend to install gridelements. With the help of this extension you can easily create columns in the backend.
 
-Steps to do: 
+Steps to do:
 
 1. Install the extension (key: gridelements)
-2. Add gridlayouts: switch to list view select e.g. a sysfolder where they should be stored, and add all needed columns versions (e.g. box with 3 columns). 
+2. Add gridlayouts: switch to list view select e.g. a sysfolder where they should be stored, and add all needed columns versions (e.g. box with 3 columns).
 3. I have added an example configuration for gridelements you can find it in EXT:kss_tmpl_gumby/Configuration/TypoScript/Gridelements.ts you might need to adapt at least the IDs which you had to add for the gridelements. You can also define more/different columns if needed
 
-A good german explanation for gridelements can be found here: 
+A good german explanation for gridelements can be found here:
 http://jweiland.net/typo3/extension-showcase/layout-raster-fuer-inhaltselemente-gridelements.html
 
 
